@@ -13,6 +13,7 @@
     </canvas>
 
     <script>
+    	var win=0,draw=0,lose=0; 
         var pen, pen2;
         var boxx =50, boxy = 20, bw = 600, bh = 300;          //bw=boxWidth,bh=boxHeight
         var margin = 20;
@@ -785,17 +786,23 @@
                 p1++;
             }
         }
-        if (p1 == 3 || p2 == 3) {
-            if (p1 == 3) {
+        if (p1 == 2|| p2 == 2) {
+            if (p1 == 2) {
                 alert('player1 win');
-
-                location.reload();
+                win=1;
+                lose=0;
+              	p1=5;
+                //location.reload();
             }
             else {
                 alert('player2 win');
-
-                location.reload();
+                lose=1;
+                win=0;
+                p2=5;
+                //location.reload();
             }
+            location.href="gamedata_write.jsp?game="+"game1&"+"win="+win+"&draw="+draw+"&lose="+lose;
+            
         }
 
         ballx = nballx;

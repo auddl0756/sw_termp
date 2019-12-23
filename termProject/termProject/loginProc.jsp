@@ -1,5 +1,7 @@
 <%@page contentType="text/html; charset=utf-8" %>
 <jsp:useBean id="mMgr" class="termp.userbeanManager"/>
+<jsp:useBean id="bean" class="termp.userbean" scope="session"/>
+
 <%
 	String id=request.getParameter("id");
 	String pw=request.getParameter("pw");
@@ -11,6 +13,11 @@
 	out.println("result="+result);
 	if(result){
 		session.setAttribute("idKey",id);
+		session.setAttribute("pwKey", pw);//added
+		
+		bean.setId(id);//added
+		bean.setPw(pw);//added
+		
 		msg="로그인에 성공했습니다.";
 		url="menu(after_login).jsp";
 	}
